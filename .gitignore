@@ -1,0 +1,12 @@
+# Build folders
+build*/
+_build*/
+cmake-build*/
+
+# IDEs
+.idea/
+.vs/
+.vscode/
+
+# Mac
+.DS_Store
