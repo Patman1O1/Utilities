@@ -8,6 +8,7 @@ project(Utilities LANGUAGES NONE)
 # Includes
 #-----------------------------------------------------------------------------------------------------------------------
 include(GNUInstallDirs)
+include(cmake/dep_mgr.cmake)
 
 #-----------------------------------------------------------------------------------------------------------------------
 # Install Rules
@@ -33,3 +34,4 @@ install(
         DIRECTORY ${CMAKE_SOURCE_DIR}/
         DESTINATION ${CMAKE_INSTALL_DATADIR}/clang/
 )
+

@@ -10,9 +10,8 @@
     {
       "name": "default",
       "displayName": "Default",
-      "hidden": false,
+      "hidden": true,
       "description": "The default configuration. All configurations inherit from this.",
-      "generator": "Ninja",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Default"
       },
