@@ -36,6 +36,14 @@ install(
             PATTERN ".clang-format"
 )
 
+# Install the install manifest
+install(CODE "
+  file(WRITE \"${CMAKE_BINARY_DIR}/install_manifest.txt\" \"\")
+  foreach(file \${CMAKE_INSTALL_MANIFEST_FILES})
+    file(APPEND \"${CMAKE_BINARY_DIR}/install_manifest.txt\" \"\${file}\n\")
+  endforeach()
+")
+
 #-----------------------------------------------------------------------------------------------------------------------
 # Uninstall Target
 #-----------------------------------------------------------------------------------------------------------------------
