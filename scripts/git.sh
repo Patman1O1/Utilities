@@ -4,27 +4,50 @@
 # Git
 # ===============================
 
-function add_all() {
-    # For each file in the working directory...
-    find . -type f | while read -r file ; do
-        # Attempt to add the current file
-        git add "$file"
+function git_fetch() {
+    # Define parameters
+    NAME=$1
+    REPO=$2
+    BRANCH=$3
 
-        # If adding the current file failed...
-        if [ $? -ne 0 ]; then
-            # Prompt the user
-            echo "git.sh: error: failed to add $file"
+    # If $NAME was not specified...
+    if [ -z "$NAME" ]; then
+        # Prompt the user to specify $NAME
+        echo "git.sh: git_fetch error: \$NAME (aka \$1) was not specified"
 
-            # Exit the function with an error code
-            exit 1
-        fi
+        # Exit the script with a non-zero exit code
+        exit 1
+    fi
 
-        # Otherwise, prompt the user that the file was successfully added
-        echo "git.sh: note: $file was successfully added"
-    done
+    # If $REPO was not specified...
+    if [ -z "$REPO" ]; then
+        # Prompt the user to specify $REPO
+        echo "git.sh: git_fetch error: \$"
 
-    # Prompt the user that the all files were successfully added in the working directory
-    echo "git.sh: note: all files in $(pwd) were successfully added"
+        # Exit the script with a non-zero exit code
+        exit 1
+    fi
+
+    # If $BRANCH was not specified...
+    if [ -z "$BRANCH" ]; then
+        # Set $BRANCH to main
+        BRANCH="main"
+    fi
+
+    # Create the _dep/$NAME directory if doesn't already exit
+    mkdir -p "_dep/$NAME"
+
+    # Attempt to go to _dep/$NAME directory and exit the script with an error message
+    cd "_dep/$NAME" || echo "git.sh: git_fetch error: an unexpected error occurred" && exit 1
+
+    # Clone the repository into _dep/$NAME
+    echo "Cloning $NAME..."
+    git clone REPO
+
+    # Prompt the user that the repository was successfully cloned
+    echo "$NAME was successfully cloned"
+
+    # Exit the script
+    exit 0
 }
-
 
