@@ -38,9 +38,9 @@ install(
 
 # Install the install manifest
 install(CODE "
-  file(WRITE \"${CMAKE_CURRENT_SOURCE_DIR}/install_manifest.txt\" \"\")
+  file(WRITE \"${CMAKE_CURRENT_SOURCE_DIR}/${CMAKE_CURRENT_BINARY_DIR}/install_manifest.txt\" \"\")
   foreach(file \${CMAKE_INSTALL_MANIFEST_FILES})
-    file(APPEND \"${CMAKE_CURRENT_SOURCE_DIR}/install_manifest.txt\" \"\${file}\n\")
+    file(APPEND \"${CMAKE_CURRENT_SOURCE_DIR}/${CMAKE_CURRENT_BINARY_DIR}/install_manifest.txt\" \"\${file}\n\")
   endforeach()
 ")
 
