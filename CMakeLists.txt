@@ -33,7 +33,7 @@ install(
         DIRECTORY ${CMAKE_SOURCE_DIR}
         DESTINATION "/etc/clang-format"
         FILES_MATCHING
-            PATTERN ".clang-format"
+            PATTERN "*.clang-format"
 )
 
 
