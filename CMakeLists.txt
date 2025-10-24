@@ -15,7 +15,7 @@ include(GNUInstallDirs)
 # Install shell scripts
 install(
         DIRECTORY ${CMAKE_SOURCE_DIR}/scripts
-        DESTINATION /usr/local/bin/scripts
+        DESTINATION "/usr/local/bin/scripts"
         FILES_MATCHING
             PATTERN "*.sh"
 )
@@ -23,7 +23,7 @@ install(
 # Install CMake scripts
 install(
         DIRECTORY ${CMAKE_SOURCE_DIR}/cmake
-        DESTINATION /usr/local/share/cmake
+        DESTINATION "/usr/local/share/cmake"
         FILES_MATCHING
             PATTERN "*.cmake"
 )
@@ -31,7 +31,7 @@ install(
 # Install .clang-format
 install(
         DIRECTORY ${CMAKE_SOURCE_DIR}
-        DESTINATION /etc/clang-format
+        DESTINATION "/etc/clang-format"
         FILES_MATCHING
             PATTERN ".clang-format"
 )
