@@ -15,7 +15,7 @@ include(GNUInstallDirs)
 # Install shell scripts
 install(
         DIRECTORY ${CMAKE_SOURCE_DIR}/scripts
-        DESTINATION ${CMAKE_INSTALL_BINDIR}/scripts
+        DESTINATION /usr/local/bin/scripts
         FILES_MATCHING
             PATTERN "*.sh"
 )
@@ -23,7 +23,7 @@ install(
 # Install CMake scripts
 install(
         DIRECTORY ${CMAKE_SOURCE_DIR}/cmake
-        DESTINATION ${CMAKE_INSTALL_DATADIR}/cmake
+        DESTINATION /usr/local/share/cmake
         FILES_MATCHING
             PATTERN "*.cmake"
 )
@@ -31,18 +31,11 @@ install(
 # Install .clang-format
 install(
         DIRECTORY ${CMAKE_SOURCE_DIR}
-        DESTINATION ${CMAKE_INSTALL_DATADIR}/clang
+        DESTINATION /etc/clang-format
         FILES_MATCHING
             PATTERN ".clang-format"
 )
 
-# Install the install manifest
-install(CODE "
-  file(WRITE \"${CMAKE_CURRENT_SOURCE_DIR}/${CMAKE_CURRENT_BINARY_DIR}/install_manifest.txt\" \"\")
-  foreach(file \${CMAKE_INSTALL_MANIFEST_FILES})
-    file(APPEND \"${CMAKE_CURRENT_SOURCE_DIR}/${CMAKE_CURRENT_BINARY_DIR}/install_manifest.txt\" \"\${file}\n\")
-  endforeach()
-")
 
 #-----------------------------------------------------------------------------------------------------------------------
 # Uninstall Target
