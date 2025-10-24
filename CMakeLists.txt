@@ -10,28 +10,30 @@ project(Utilities LANGUAGES NONE)
 include(GNUInstallDirs)
 
 #-----------------------------------------------------------------------------------------------------------------------
+# Variables
+#-----------------------------------------------------------------------------------------------------------------------
+set(UTILS_INSTALL_DIR "/usr/local/utils")
+
+#-----------------------------------------------------------------------------------------------------------------------
 # Install Rules
 #-----------------------------------------------------------------------------------------------------------------------
 # Install shell scripts
-install(
-        DIRECTORY ${CMAKE_SOURCE_DIR}/scripts
-        DESTINATION "/usr/local/bin/scripts"
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/scripts
+        DESTINATION ${UTILS_INSTALL_DIR}/scripts
         FILES_MATCHING
             PATTERN "*.sh"
 )
 
 # Install CMake scripts
-install(
-        DIRECTORY ${CMAKE_SOURCE_DIR}/cmake
-        DESTINATION "/usr/local/share/cmake"
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/cmake
+        DESTINATION ${UTILS_INSTALL_DIR}/cmake
         FILES_MATCHING
             PATTERN "*.cmake"
 )
 
 # Install .clang-format
-install(
-        DIRECTORY ${CMAKE_SOURCE_DIR}
-        DESTINATION "/etc/clang-format"
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        DESTINATION ${UTILS_INSTALL_DIR}/clang
         FILES_MATCHING
             PATTERN "*.clang-format"
 )
